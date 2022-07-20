@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using PatientsWebApi.BusinessLogic;
+using PatientsWebApi.Common.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+string connection = "Server=(localdb)\\mssqllocaldb;Database=Patients;Trusted_Connection=True;";
+builder.Services.AddDbContext<PatientContext>(options =>
+    options.UseSqlServer(connection));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
